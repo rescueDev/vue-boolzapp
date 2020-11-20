@@ -7,7 +7,6 @@
 
 .container {
   width: 100%;
-  min-height: 100vh;
   /* debug */
   /* background-color: grey; */
   border: 1px solid black;
@@ -23,12 +22,13 @@
 
 .container-webapp {
   width: 80%;
+  height: 700px;
   margin: 2% auto;
   display: flex;
   justify-content: center;
   /*debug */
   background-color: whitesmoke;
-  border: 1px solid black;
+  border: 1px solid purple;
   position: relative;
 }
 
@@ -91,12 +91,12 @@
 .right-side {
   border: 1px solid black;
   width: 70%;
+  height: calc(698.4 - 30px);
 }
 
 .info-chat {
   display: flex;
   justify-content: space-between;
-  min-height: 50px;
   border: 1px solid black;
   padding: 15px;
   position: sticky;
@@ -108,7 +108,8 @@
 
 .chat-space {
   width: 100%;
-  min-height: 600px;
+  height: calc(700px - 50px - 70px);
+
   overflow: auto;
   /* debug */
   background-color: rgb(189, 172, 189);
@@ -116,7 +117,7 @@
 }
 
 .centratura-chat {
-  padding: 20px 10px;
+  padding: 20px 40px;
 }
 
 .message-sent {
@@ -128,17 +129,38 @@
 .message-received {
   display: flex;
   justify-content: flex-start;
-  /* debug */
+  align-self: center;
 }
 
 .text-sent {
   width: 30%;
   min-height: 30px;
   border: 1px solid black;
+  background-color: rgb(108, 201, 108);
+  padding: 5px;
 }
 
 .text-rec {
   width: 30%;
   min-height: 30px;
   border: 1px solid black;
+  background-color: rgb(219, 218, 209);
+  padding: 5px;
+}
+
+/* Barra invia messaggio */
+.send-message-bar {
+  width: 100%;
+  padding: 5px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.type-message {
+  width: 90%;
+  height: 40px;
+}
+
+.send-message-bar i {
+  align-self: center;
 }
