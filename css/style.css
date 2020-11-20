@@ -42,7 +42,24 @@
   display: flex;
   justify-content: space-between;
   min-height: 50px;
-  padding: 15px;
+  padding: 5px;
+}
+
+#user-name-avatar {
+  width: 20%;
+  display: flex;
+}
+
+#nome-user {
+  width: 80%;
+  align-self: center;
+  font-size: 12px;
+}
+
+img {
+  max-width: 100%;
+  height: 50px;
+  border-radius: 50px;
 }
 
 #enable-notifications {
@@ -91,24 +108,30 @@
 .right-side {
   border: 1px solid black;
   width: 70%;
-  height: calc(698.4 - 30px);
+  /* height: calc(698.4 - 30px); */
 }
 
 .info-chat {
   display: flex;
   justify-content: space-between;
-  border: 1px solid black;
-  padding: 15px;
+
+  padding: 5px;
   position: sticky;
 }
 
+.avatar-name {
+  width: 20%;
+  display: flex;
+}
+
 .contact-info {
-  display: inline-block;
+  width: 80%;
+  align-self: center;
 }
 
 .chat-space {
   width: 100%;
-  height: calc(700px - 50px - 70px);
+  height: calc(700px - 60px - 70px);
 
   overflow: auto;
   /* debug */
@@ -123,6 +146,7 @@
 .message-sent {
   display: flex;
   justify-content: flex-end;
+  margin: 10px auto;
   /* debug */
 }
 
@@ -130,6 +154,7 @@
   display: flex;
   justify-content: flex-start;
   align-self: center;
+  margin: 10px auto;
 }
 
 .text-sent {
