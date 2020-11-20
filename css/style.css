@@ -1,0 +1,105 @@
+/* Regole generali */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  width: 100%;
+  min-height: 100vh;
+  /* debug */
+  /* background-color: grey; */
+  border: 1px solid black;
+}
+
+#header {
+  width: 100%;
+  height: 100px;
+  background-color: darkgreen;
+  border: 1px solid black;
+  position: absolute;
+}
+
+.container-webapp {
+  width: 80%;
+  margin: 2% auto;
+  display: flex;
+  justify-content: center;
+  /*debug */
+  background-color: whitesmoke;
+  border: 1px solid black;
+  position: relative;
+}
+
+/* Parte sinistra webapp */
+.left-side {
+  width: 30%;
+  border: 1px solid black;
+}
+
+.nome-utente {
+  display: flex;
+  justify-content: space-between;
+  min-height: 50px;
+  padding: 15px;
+}
+
+#enable-notifications {
+  display: flex;
+  justify-content: space-between;
+  background-color: slateblue;
+}
+
+#filter-chat {
+  width: 100%;
+  padding: 10px;
+  text-align: center;
+}
+
+.input-icons i {
+  position: absolute;
+}
+
+.input-icons {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.fa-search {
+  padding: 10px;
+  min-width: 40px;
+  color: slategray;
+}
+
+/* Lista chat sx */
+
+.list-chat-container {
+  width: 95%;
+  margin: 0 auto;
+  min-height: 600px;
+  overflow: auto;
+}
+
+.chat-item {
+  width: 100%;
+  min-height: 40px;
+  border: 1px solid black;
+}
+
+/* Parte destra della webapp */
+.right-side {
+  border: 1px solid black;
+  width: 70%;
+}
+
+.info-chat {
+  display: flex;
+  justify-content: space-between;
+  min-height: 50px;
+  padding: 15px;
+}
+
+.contact-info {
+  display: inline-block;
+}

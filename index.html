@@ -3,33 +3,75 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+      integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+      crossorigin="anonymous"
+    />
     <link rel="stylesheet" href="css/style.css" />
     <title>Boozzapp</title>
   </head>
   <body>
     <!-- Sottopagina con header verde -->
     <div class="container">
+      <div id="header"></div>
       <div class="container-webapp">
         <!-- Parte sinistra lista chat -->
         <div class="left-side">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid
-          repellendus, voluptate placeat, ducimus eius, non numquam sunt tenetur
-          omnis dicta laborum iste culpa ullam magni atque? Magnam vel sapiente
-          facilis?
+          <!-- Barra nome utente con avatar -->
+          <div class="nome-utente">
+            <div id="user-name-avatar">
+              <img src="" alt="user avatar" />
+              <span>Nome Utente</span>
+            </div>
+            <div id="user-name-controls">
+              <i class="fas fa-search"></i>
+              <i class="fas fa-search"></i>
+              <i class="fas fa-search"></i>
+            </div>
+          </div>
+
+          <!-- Barra attiva le notifiche desktop -->
+          <div id="enable-notifications">
+            <img src="" alt="logo notifiche desktop" />
+            <div id="notifications-text">
+              <h5>Ricevi notifiche dei nuovi messaggi</h5>
+              <a>Attiva subito le notifiche</a>
+            </div>
+          </div>
+
+          <!-- Input filtra chat -->
+          <div class="input-icons">
+            <i class="fas fa-search"></i> <input type="text" id="filter-chat" />
+          </div>
+
+          <!-- Lista chat sx-->
+          <div class="list-chat-container">
+            <div class="chat-item"></div>
+            <div class="chat-item"></div>
+            <div class="chat-item"></div>
+            <div class="chat-item"></div>
+          </div>
         </div>
         <!-- Parte destra chat aperta -->
         <div class="right-side">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur
-          natus, enim soluta dolorum quo id atque labore, magnam est a vero
-          voluptatibus, autem culpa laborum perspiciatis suscipit earum
-          exercitationem aspernatur. Lorem, ipsum dolor sit amet consectetur
-          adipisicing elit. Corporis enim ab excepturi officiis alias, nobis
-          ipsam sit odit repudiandae ullam, blanditiis porro suscipit architecto
-          culpa et. Possimus incidunt itaque eos. Lorem ipsum dolor sit amet
-          consectetur, adipisicing elit. Facere voluptates ut at architecto
-          nobis sint veritatis, consectetur nesciunt, rerum perspiciatis natus.
-          Iusto similique dolor dignissimos, sit harum hic culpa quis!
+          <!-- Header della chat attiva -->
+          <div class="info-chat">
+            <div class="avatar-name">
+              <img src="" alt="contact-avatar" />
+              <div class="contact-info">
+                <h5>Nome contatto</h5>
+                <p>Ultimo accesso:</p>
+              </div>
+            </div>
+            <!-- Icone opzioni chat attiva -->
+            <div class="active-chat-options">
+              <i class="fas fa-search"></i>
+              <i class="fas fa-search"></i>
+              <i class="fas fa-search"></i>
+            </div>
+          </div>
         </div>
       </div>
     </div>
