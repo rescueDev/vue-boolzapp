@@ -5,6 +5,9 @@
   box-sizing: border-box;
 }
 
+input {
+  border-radius: 20px;
+}
 .container {
   width: 100%;
   /* debug */
@@ -15,8 +18,7 @@
 #header {
   width: 100%;
   height: 100px;
-  background-color: darkgreen;
-  border: 1px solid black;
+  background-color: #009688;
   position: absolute;
 }
 
@@ -27,7 +29,7 @@
   display: flex;
   justify-content: center;
   /*debug */
-  background-color: whitesmoke;
+  background-color: #ededed;
   border: 1px solid purple;
   position: relative;
 }
@@ -35,7 +37,6 @@
 /* Parte sinistra webapp */
 .left-side {
   width: 30%;
-  border: 1px solid black;
 }
 
 .nome-utente {
@@ -43,6 +44,7 @@
   justify-content: space-between;
   min-height: 50px;
   padding: 5px;
+  align-items: center;
 }
 
 #user-name-avatar {
@@ -56,6 +58,12 @@
   font-size: 12px;
 }
 
+#user-name-controls .fas {
+  padding: 0 5px;
+  color: slategray;
+  font-size: 18px;
+}
+
 img {
   max-width: 100%;
   height: 50px;
@@ -65,13 +73,15 @@ img {
 #enable-notifications {
   display: flex;
   justify-content: space-between;
-  background-color: slateblue;
+  background-color: #9de1fe;
+  min-height: 60px;
 }
 
 #filter-chat {
   width: 100%;
   padding: 10px;
   text-align: center;
+  position: sticky;
 }
 
 .input-icons i {
@@ -93,20 +103,35 @@ img {
 
 .list-chat-container {
   width: 95%;
+  height: calc(700px - 210px);
   margin: 0 auto;
-  min-height: 600px;
   overflow: auto;
 }
 
 .chat-item {
   width: 100%;
   min-height: 40px;
-  border: 1px solid black;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.user-chat-avatar {
+  width: 30%;
+  display: flex;
+}
+
+.nome-contact {
+  width: 80%;
+  align-self: center;
+}
+
+.nome-contact p {
+  font-size: 12px;
 }
 
 /* Parte destra della webapp */
 .right-side {
-  border: 1px solid black;
   width: 70%;
   /* height: calc(698.4 - 30px); */
 }
@@ -114,9 +139,10 @@ img {
 .info-chat {
   display: flex;
   justify-content: space-between;
-
+  align-items: center;
   padding: 5px;
   position: sticky;
+  border-left: 1px solid slategray;
 }
 
 .avatar-name {
@@ -129,14 +155,20 @@ img {
   align-self: center;
 }
 
+.active-chat-options i {
+  padding: 0 5px;
+  color: slategray;
+  font-size: 18px;
+}
+
 .chat-space {
   width: 100%;
   height: calc(700px - 60px - 70px);
 
   overflow: auto;
   /* debug */
-  background-color: rgb(189, 172, 189);
-  border: 1px solid black;
+  background-image: url(../img/whatsappbg.png);
+  background-size: cover;
 }
 
 .centratura-chat {
@@ -153,24 +185,35 @@ img {
 .message-received {
   display: flex;
   justify-content: flex-start;
-  align-self: center;
+  align-items: center;
   margin: 10px auto;
 }
 
 .text-sent {
   width: 30%;
-  min-height: 30px;
-  border: 1px solid black;
-  background-color: rgb(108, 201, 108);
+  min-height: 50px;
+  background-color: #dcf8c6;
   padding: 5px;
+  border-radius: 10px;
+  display: flex;
+}
+
+.mess-sent {
+  align-self: center;
 }
 
 .text-rec {
   width: 30%;
-  min-height: 30px;
-  border: 1px solid black;
-  background-color: rgb(219, 218, 209);
+  min-height: 50px;
+
+  background-color: rgb(255, 255, 255);
   padding: 5px;
+  border-radius: 10px;
+  display: flex;
+}
+
+.mess-rec {
+  align-self: center;
 }
 
 /* Barra invia messaggio */
@@ -188,4 +231,6 @@ img {
 
 .send-message-bar i {
   align-self: center;
+  font-size: 18px;
+  color: slategray;
 }
