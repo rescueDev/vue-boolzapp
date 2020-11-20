@@ -97,9 +97,48 @@
   display: flex;
   justify-content: space-between;
   min-height: 50px;
+  border: 1px solid black;
   padding: 15px;
+  position: sticky;
 }
 
 .contact-info {
   display: inline-block;
+}
+
+.chat-space {
+  width: 100%;
+  min-height: 600px;
+  overflow: auto;
+  /* debug */
+  background-color: rgb(189, 172, 189);
+  border: 1px solid black;
+}
+
+.centratura-chat {
+  padding: 20px 10px;
+}
+
+.message-sent {
+  display: flex;
+  justify-content: flex-end;
+  /* debug */
+}
+
+.message-received {
+  display: flex;
+  justify-content: flex-start;
+  /* debug */
+}
+
+.text-sent {
+  width: 30%;
+  min-height: 30px;
+  border: 1px solid black;
+}
+
+.text-rec {
+  width: 30%;
+  min-height: 30px;
+  border: 1px solid black;
 }
