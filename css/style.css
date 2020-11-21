@@ -3,11 +3,20 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
 }
 
+/* Stile input generale */
 input {
   border-radius: 20px;
+  border: 0;
+  padding-left: 10px;
 }
+
+input:focus {
+  outline-width: 0;
+}
+
 .container {
   width: 100%;
   /* debug */
@@ -30,7 +39,6 @@ input {
   justify-content: center;
   /*debug */
   background-color: #ededed;
-  border: 1px solid purple;
   position: relative;
 }
 
@@ -48,7 +56,7 @@ input {
 }
 
 #user-name-avatar {
-  width: 20%;
+  width: 40%;
   display: flex;
 }
 
@@ -59,7 +67,7 @@ input {
 }
 
 #user-name-controls .fas {
-  padding: 0 5px;
+  padding: 0 8px;
   color: slategray;
   font-size: 18px;
 }
@@ -72,9 +80,14 @@ img {
 
 #enable-notifications {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   background-color: #9de1fe;
   min-height: 60px;
+  padding: 10px;
+}
+
+#notifications-text {
+  align-self: center;
 }
 
 #filter-chat {
@@ -84,18 +97,20 @@ img {
   position: sticky;
 }
 
-.input-icons i {
+.input-icon {
   position: absolute;
+  top: calc (50% - 0.5em);
+  left: 3px;
 }
 
 .input-icons {
   width: 100%;
   margin-bottom: 10px;
+  position: relative;
 }
 
 .fa-search {
   padding: 10px;
-  min-width: 40px;
   color: slategray;
 }
 
@@ -105,12 +120,13 @@ img {
   width: 95%;
   height: calc(700px - 210px);
   margin: 0 auto;
-  overflow: auto;
+  overflow-y: auto;
 }
 
 .chat-item {
   width: 100%;
   min-height: 40px;
+  border-bottom: 1px solid rgb(175, 187, 199);
   padding: 10px;
   display: flex;
   justify-content: space-between;
@@ -165,7 +181,7 @@ img {
   width: 100%;
   height: calc(700px - 60px - 70px);
 
-  overflow: auto;
+  overflow-y: auto;
   /* debug */
   background-image: url(../img/whatsappbg.png);
   background-size: cover;
@@ -219,7 +235,7 @@ img {
 /* Barra invia messaggio */
 .send-message-bar {
   width: 100%;
-  padding: 5px;
+  padding: 15px;
   display: flex;
   justify-content: space-between;
 }
