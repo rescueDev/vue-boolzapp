@@ -191,6 +191,27 @@ img {
   padding: 20px 40px;
 }
 
+/* Alternative chat dinamiche per ogni contatto */
+.centratura-chat.uno {
+  display: block;
+}
+
+.centratura-chat.due {
+  display: none;
+}
+
+.centratura-chat.tre {
+  display: none;
+}
+
+.centratura-chat.quattro {
+  display: none;
+}
+
+.centratura-chat.cinque {
+  display: none;
+}
+
 .message-sent {
   display: flex;
   justify-content: flex-end;
