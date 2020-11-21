@@ -172,9 +172,24 @@ img {
   border-left: 1px solid slategray;
 }
 
+/* Alternative dinamiche per contatto mostrato con chat attiva */
+
 .avatar-name {
   width: 60%;
+}
+
+.avatar-name.uno {
   display: flex;
+}
+
+.avatar-name.due {
+  display: none;
+}
+.avatar-name.tre {
+  display: none;
+}
+.avatar-name.quattro {
+  display: none;
 }
 
 .contact-info {
