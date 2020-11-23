@@ -70,17 +70,20 @@
                 class="contenitore-contatto"
                 v-for="(item, index) in itemsSearched"
                 ::key="index"
+                :class="(contatti[index].selected === true) ? 'selected' : ''"
               >
                 <div
                   class="single-contact"
-                  @click="selectContatto(item)"
-                  :class="(item.selected === true) ? 'selected' : ''"
+                  @click="selectContatto(item, index)"
                 >
-                  <img :src="item.img" />
-                  <h4>{{item.name}}</h4>
+                  <img :src="contatti[index].img" />
+                  <h4>{{contatti[index].name}}</h4>
+                  <p class="last-message">provo</p>
                 </div>
                 <div class="ultimo-accesso">
-                  <p v-model="item.lastAccess">{{item.lastAccess}}</p>
+                  <p v-model="contatti[index].lastAccess">
+                    {{contatti[index].lastAccess}}
+                  </p>
                 </div>
               </div>
             </div>
@@ -90,403 +93,54 @@
 
         <!-- Parte destra chat aperta -->
         <div class="right-side">
-          <!-- Header della chat attiva -->
-          <div class="info-chat">
-            <!-- SEZIONE DINAMICA CAMBIA CONTATTO CON CUI CHATTO -->
+          <div
+            id="contenitore-chat-dx"
+            v-for="(item, index) in contatti"
+            :key="index"
+            :class="(contatti[indexSelected, index].selected === true && contatti[indexSelected, index].isVisible === true ) ? 'show' : 'hidden'"
+          >
+            <!-- Header della chat attiva -->
+            <div class="info-chat">
+              <!-- SEZIONE DINAMICA CAMBIA CONTATTO CON CUI CHATTO -->
 
-            <!-- Info contatto con cui chatto 1 -->
-            <div class="avatar-name uno">
-              <img
-                class="contact-avatar"
-                src="img/avatar_8.jpg"
-                alt="contact-avatar"
-              />
+              <!-- Info contatto con cui chatto 1 -->
+              <div class="avatar-name">
+                <img
+                  class="contact-avatar"
+                  :src="contatti[index].img"
+                  alt="contact-avatar"
+                />
 
-              <div class="contact-info">
-                <h5>Nome contatto</h5>
-                <p>Ultimo accesso: oggi alle 12:01</p>
-              </div>
-            </div>
-
-            <!-- Info contatto con cui chatto 2 -->
-            <div class="avatar-name due">
-              <img
-                class="contact-avatar"
-                src="img/avatar_8.jpg"
-                alt="contact-avatar"
-              />
-
-              <div class="contact-info">
-                <h5>Nome contatto</h5>
-                <p>Ultimo accesso: ieri alle 11:01</p>
-              </div>
-            </div>
-
-            <!-- Info contatto con cui chatto 3 -->
-            <div class="avatar-name tre">
-              <img
-                class="contact-avatar"
-                src="img/avatar_8.jpg"
-                alt="contact-avatar"
-              />
-
-              <div class="contact-info">
-                <h5>Nome contatto</h5>
-                <p>Ultimo accesso: 22/11/2010 alle 12:01</p>
-              </div>
-            </div>
-
-            <!-- Info contatto con cui chatto 4 -->
-            <div class="avatar-name quattro">
-              <img
-                class="contact-avatar"
-                src="img/avatar_8.jpg"
-                alt="contact-avatar"
-              />
-
-              <div class="contact-info">
-                <h5>Nome contatto</h5>
-                <p>Ultimo accesso: 10/03/2016 alle 09:41</p>
-              </div>
-            </div>
-
-            <!-- Icone opzioni chat attiva -->
-            <div class="active-chat-options">
-              <i class="fas fa-search"></i>
-              <i class="fas fa-paperclip"></i>
-              <i class="fas fa-comment-dots"></i>
-            </div>
-          </div>
-
-          <!-- Sezione chat -->
-          <div class="chat-space">
-            <!-- Centratura chat e messaggi -->
-            <div class="centratura-chat uno">
-              <!-- messaggio inviato -->
-              <div class="message-sent">
-                <div class="text-sent">
-                  <h5 class="mess-sent">Single message sent</h5>
+                <div class="contact-info">
+                  <h5>{{contatti[index].name}}</h5>
+                  <p>Ultimo accesso:{{contatti[index].lastAccess}}</p>
                 </div>
-              </div>
-              <!-- messaggio ricevuto -->
-              <div class="message-received">
-                <div class="text-rec">
-                  <h5 class="mess-rec">Single message recevied</h5>
-                </div>
-              </div>
-              <!-- messaggio inviato -->
-              <div class="message-sent">
-                <div class="text-sent">
-                  <h5 class="mess-sent">Single message sent</h5>
-                </div>
-              </div>
-              <!-- messaggio ricevuto -->
-              <div class="message-received">
-                <div class="text-rec">
-                  <h5 class="mess-rec">Single message recevied</h5>
-                </div>
-              </div>
-              <!-- messaggio inviato -->
-              <div class="message-sent">
-                <div class="text-sent">
-                  <h5 class="mess-sent">Single message sent</h5>
-                </div>
-              </div>
-              <!-- messaggio ricevuto -->
-              <div class="message-received">
-                <div class="text-rec">
-                  <h5 class="mess-rec">Single message recevied</h5>
-                </div>
-              </div>
-              <!-- messaggio inviato -->
-              <div class="message-sent">
-                <div class="text-sent">
-                  <h5 class="mess-sent">Single message sent</h5>
-                </div>
-              </div>
-              <!-- messaggio ricevuto -->
-              <div class="message-received">
-                <div class="text-rec">
-                  <h5 class="mess-rec">Single message recevied</h5>
-                </div>
-              </div>
-              <!-- messaggio inviato -->
-              <div class="message-sent">
-                <div class="text-sent">
-                  <h5 class="mess-sent">Single message sent</h5>
-                </div>
-              </div>
-              <!-- messaggio ricevuto -->
-              <div class="message-received">
-                <div class="text-rec">
-                  <h5 class="mess-rec">Single message recevied</h5>
-                </div>
-              </div>
-              <!-- messaggio inviato -->
-              <div class="message-sent">
-                <div class="text-sent">
-                  <h5 class="mess-sent">Single message sent</h5>
-                </div>
-              </div>
-              <!-- messaggio ricevuto -->
-              <div class="message-received">
-                <div class="text-rec">
-                  <h5 class="mess-rec">Single message recevied</h5>
-                </div>
-              </div>
-              <!-- messaggio inviato -->
-              <div class="message-sent">
-                <div class="text-sent">
-                  <h5 class="mess-sent">Single message sent</h5>
-                </div>
-              </div>
-              <!-- messaggio ricevuto -->
-              <div class="message-received">
-                <div class="text-rec">
-                  <h5 class="mess-rec">Single message recevied</h5>
-                </div>
-              </div>
-              <!-- messaggio inviato -->
-              <div class="message-sent">
-                <div class="text-sent">
-                  <h5 class="mess-sent">Single message sent</h5>
-                </div>
-              </div>
-              <!-- messaggio ricevuto -->
-              <div class="message-received">
-                <div class="text-rec">
-                  <h5 class="mess-rec">Single message recevied</h5>
-                </div>
-              </div>
-              <!-- messaggio inviato -->
-              <div class="message-sent">
-                <div class="text-sent">
-                  <h5 class="mess-sent">Single message sent</h5>
-                </div>
-              </div>
-              <!-- messaggio ricevuto -->
-              <div class="message-received">
-                <div class="text-rec">
-                  <h5 class="mess-rec">Single message recevied</h5>
-                </div>
-              </div>
-
-              <!-- messaggio ricevuto -->
-              <div class="message-received">
-                <div class="text-rec">
-                  <h5 class="mess-rec">Single message recevied</h5>
-                </div>
-              </div>
-              <!-- messaggio inviato -->
-              <div class="message-sent">
-                <div class="text-sent">
-                  <h5 class="mess-sent">Single message sent</h5>
-                </div>
-              </div>
-              <!-- messaggio ricevuto -->
-              <div class="message-received">
-                <div class="text-rec">
-                  <h5 class="mess-rec">Single message recevied</h5>
+                <!-- Icone opzioni chat attiva -->
+                <div class="active-chat-options">
+                  <i class="fas fa-search"></i>
+                  <i class="fas fa-paperclip"></i>
+                  <i class="fas fa-comment-dots"></i>
                 </div>
               </div>
             </div>
 
-            <!-- SEZIONI CHAT NASCOSTE PER OGNI CONTATTO -->
-
-            <!-- Chat alternativa 2 -->
-            <div class="centratura-chat due">
-              <!-- messaggio inviato -->
-              <div class="message-sent">
-                <div class="text-sent">
-                  <h5 class="mess-sent">Prova prova</h5>
+            <!-- Sezione chat -->
+            <div class="chat-space">
+              <!-- Centratura chat e messaggi -->
+              <div class="centratura-chat uno">
+                <!-- messaggio inviato -->
+                <div class="message-sent">
+                  <div class="text-sent">
+                    <h5 class="mess-sent">{{contatti[index].sentMessages}}</h5>
+                  </div>
                 </div>
-              </div>
-              <!-- messaggio ricevuto -->
-              <div class="message-received">
-                <div class="text-rec">
-                  <h5 class="mess-rec">Single message recevied</h5>
-                </div>
-              </div>
-              <!-- messaggio inviato -->
-              <div class="message-sent">
-                <div class="text-sent">
-                  <h5 class="mess-sent">Prova prova</h5>
-                </div>
-              </div>
-              <!-- messaggio ricevuto -->
-              <div class="message-received">
-                <div class="text-rec">
-                  <h5 class="mess-rec">Single message recevied</h5>
-                </div>
-              </div>
-              <!-- messaggio inviato -->
-              <div class="message-sent">
-                <div class="text-sent">
-                  <h5 class="mess-sent">Prova prova</h5>
-                </div>
-              </div>
-              <!-- messaggio ricevuto -->
-              <div class="message-received">
-                <div class="text-rec">
-                  <h5 class="mess-rec">Single message recevied</h5>
-                </div>
-              </div>
-              <!-- messaggio inviato -->
-              <div class="message-sent">
-                <div class="text-sent">
-                  <h5 class="mess-sent">Prova prova</h5>
-                </div>
-              </div>
-              <!-- messaggio ricevuto -->
-              <div class="message-received">
-                <div class="text-rec">
-                  <h5 class="mess-rec">Single message recevied</h5>
-                </div>
-              </div>
-
-              <!-- messaggio ricevuto -->
-              <div class="message-received">
-                <div class="text-rec">
-                  <h5 class="mess-rec">Single message recevied</h5>
-                </div>
-              </div>
-              <!-- messaggio inviato -->
-              <div class="message-sent">
-                <div class="text-sent">
-                  <h5 class="mess-sent">Single message sent</h5>
-                </div>
-              </div>
-              <!-- messaggio ricevuto -->
-              <div class="message-received">
-                <div class="text-rec">
-                  <h5 class="mess-rec">Single message recevied</h5>
-                </div>
-              </div>
-            </div>
-
-            <!-- Chat alternativa 3 -->
-            <div class="centratura-chat tre">
-              <!-- messaggio ricevuto -->
-              <div class="message-received">
-                <div class="text-rec">
-                  <h5 class="mess-rec">Chat sezione 2</h5>
-                </div>
-              </div>
-              <!-- messaggio inviato -->
-              <div class="message-sent">
-                <div class="text-sent">
-                  <h5 class="mess-sent">Prova prova</h5>
-                </div>
-              </div>
-              <!-- messaggio ricevuto -->
-              <div class="message-received">
-                <div class="text-rec">
-                  <h5 class="mess-rec">Single message recevied</h5>
-                </div>
-              </div>
-            </div>
-
-            <!-- Chat alternativa 4 -->
-            <div class="centratura-chat quattro">
-              <!-- messaggio ricevuto -->
-              <div class="message-received">
-                <div class="text-rec">
-                  <h5 class="mess-rec">Chat sezione 2</h5>
-                </div>
-              </div>
-              <!-- messaggio inviato -->
-              <div class="message-sent">
-                <div class="text-sent">
-                  <h5 class="mess-sent">Prova prova</h5>
-                </div>
-              </div>
-              <!-- messaggio ricevuto -->
-              <div class="message-received">
-                <div class="text-rec">
-                  <h5 class="mess-rec">Single message recevied</h5>
-                </div>
-              </div>
-              <!-- messaggio inviato -->
-              <div class="message-sent">
-                <div class="text-sent">
-                  <h5 class="mess-sent">Prova prova</h5>
-                </div>
-              </div>
-              <!-- messaggio ricevuto -->
-              <div class="message-received">
-                <div class="text-rec">
-                  <h5 class="mess-rec">Single message recevied</h5>
-                </div>
-              </div>
-              <!-- messaggio inviato -->
-              <div class="message-sent">
-                <div class="text-sent">
-                  <h5 class="mess-sent">Prova prova</h5>
-                </div>
-              </div>
-              <!-- messaggio ricevuto -->
-              <div class="message-received">
-                <div class="text-rec">
-                  <h5 class="mess-rec">Single message recevied</h5>
-                </div>
-              </div>
-              <!-- messaggio inviato -->
-              <div class="message-sent">
-                <div class="text-sent">
-                  <h5 class="mess-sent">Prova prova</h5>
-                </div>
-              </div>
-              <!-- messaggio ricevuto -->
-              <div class="message-received">
-                <div class="text-rec">
-                  <h5 class="mess-rec">Single message recevied</h5>
-                </div>
-              </div>
-              <!-- messaggio inviato -->
-              <div class="message-sent">
-                <div class="text-sent">
-                  <h5 class="mess-sent">Prova prova</h5>
-                </div>
-              </div>
-            </div>
-
-            <!-- Chat alternativa 5 -->
-            <div class="centratura-chat cinque">
-              <!-- messaggio ricevuto -->
-              <div class="message-received">
-                <div class="text-rec">
-                  <h5 class="mess-rec">Single message recevied</h5>
-                </div>
-              </div>
-              <!-- messaggio inviato -->
-              <div class="message-sent">
-                <div class="text-sent">
-                  <h5 class="mess-sent">Prova prova</h5>
-                </div>
-              </div>
-              <!-- messaggio ricevuto -->
-              <div class="message-received">
-                <div class="text-rec">
-                  <h5 class="mess-rec">Single message recevied</h5>
-                </div>
-              </div>
-
-              <!-- messaggio ricevuto -->
-              <div class="message-received">
-                <div class="text-rec">
-                  <h5 class="mess-rec">Single message recevied</h5>
-                </div>
-              </div>
-              <!-- messaggio inviato -->
-              <div class="message-sent">
-                <div class="text-sent">
-                  <h5 class="mess-sent">Single message sent</h5>
-                </div>
-              </div>
-              <!-- messaggio ricevuto -->
-              <div class="message-received">
-                <div class="text-rec">
-                  <h5 class="mess-rec">Single message recevied</h5>
+                <!-- messaggio ricevuto -->
+                <div class="message-received">
+                  <div class="text-rec">
+                    <h5 class="mess-rec">
+                      {{contatti[index].receivedMessages}}
+                    </h5>
+                  </div>
                 </div>
               </div>
             </div>
