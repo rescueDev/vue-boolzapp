@@ -78,7 +78,11 @@
                 >
                   <img :src="contatti[index].img" />
                   <h4>{{contatti[index].name}}</h4>
-                  <p class="last-message">provo</p>
+                  <div>
+                    <p class="last-message">
+                      {{contatti[index].receivedMessages}}
+                    </p>
+                  </div>
                 </div>
                 <div class="ultimo-accesso">
                   <p v-model="contatti[index].lastAccess">
@@ -113,7 +117,7 @@
 
                 <div class="contact-info">
                   <h5>{{contatti[index].name}}</h5>
-                  <p>Ultimo accesso:{{contatti[index].lastAccess}}</p>
+                  <p>Ultimo accesso: {{contatti[index].lastAccess}}</p>
                 </div>
                 <!-- Icone opzioni chat attiva -->
                 <div class="active-chat-options">
@@ -127,19 +131,21 @@
             <!-- Sezione chat -->
             <div class="chat-space">
               <!-- Centratura chat e messaggi -->
-              <div class="centratura-chat uno">
+              <div class="centratura-chat">
                 <!-- messaggio inviato -->
                 <div class="message-sent">
                   <div class="text-sent">
-                    <h5 class="mess-sent">{{contatti[index].sentMessages}}</h5>
+                    <h4 class="mess-sent">{{contatti[index].sentMessages}}</h4>
+                    <p>{{contatti[index].dataMessSent}}</p>
                   </div>
                 </div>
                 <!-- messaggio ricevuto -->
                 <div class="message-received">
                   <div class="text-rec">
-                    <h5 class="mess-rec">
+                    <h4 class="mess-rec">
                       {{contatti[index].receivedMessages}}
-                    </h5>
+                    </h4>
+                    <p>{{contatti[index].dataMessRec}}</p>
                   </div>
                 </div>
               </div>

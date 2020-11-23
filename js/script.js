@@ -13,6 +13,8 @@ var app = new Vue({
         lastAccess: "12/01/2020 16:58",
         sentMessages: "Ciao Michele cosa fai oggi?",
         receivedMessages: "Oggi devo fare la spesa, tu?",
+        dataMessSent: "01/11/2020 09:50",
+        dataMessRec: "01/11/2020 09:52",
       },
       {
         name: "Mario",
@@ -23,6 +25,8 @@ var app = new Vue({
         lastAccess: "21/08/2020 10:58",
         sentMessages: "Ciao Mario, come va la quarantena?",
         receivedMessages: "Insomma, devo fare un altro tampone fra 15 giorni",
+        dataMessSent: "16/11/2020 11:50",
+        dataMessRec: "12/01/2020 12:52",
       },
       {
         name: "Fabio",
@@ -34,6 +38,8 @@ var app = new Vue({
         sentMessages: "Ciao Fabio, sei sempre impegnato, non mi scrivi piu!!",
         receivedMessages:
           "Veramente ti ho scritto ieri, non è che hai sbagliato chat?",
+        dataMessSent: "12/01/2020 16:50",
+        dataMessRec: "12/01/2020 16:52",
       },
       {
         name: "Luisa",
@@ -44,6 +50,8 @@ var app = new Vue({
         lastAccess: "06/06/2020 15:20",
         sentMessages: "Scusami Luisa ma hai tagliato la barba?",
         receivedMessages: "Credi di essere simpatico vero? ",
+        dataMessSent: "21/10/2020 11:50",
+        dataMessRec: "21/10/2020 16:52",
       },
     ],
     isVisible: false,

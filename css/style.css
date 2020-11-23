@@ -181,6 +181,13 @@ img {
   align-items: center;
 }
 
+p .last-message {
+  display: inline-block;
+  overflow: hidden !important;
+  text-overflow: ellipsis;
+  width: 50px;
+}
+
 /* Parte destra della webapp */
 .right-side {
   width: 70%;
@@ -277,11 +284,12 @@ img {
   background-color: #dcf8c6;
   padding: 5px;
   border-radius: 10px;
-  display: flex;
+  /* display: flex; */
 }
 
 .mess-sent {
   align-self: center;
+  width: 100%;
 }
 
 .text-rec {
@@ -291,11 +299,18 @@ img {
   background-color: rgb(255, 255, 255);
   padding: 5px;
   border-radius: 10px;
-  display: flex;
+  /* display: flex; */
 }
 
 .mess-rec {
   align-self: center;
+  width: 100%;
+}
+
+.text-rec p,
+.text-sent p {
+  text-align: right;
+  padding-top: 5px;
 }
 
 /* Barra invia messaggio */
