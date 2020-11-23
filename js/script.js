@@ -66,7 +66,6 @@ var app = new Vue({
     selectContatto: function (item, index) {
       this.indexSelected = index;
       item.selected = !item.selected;
-      item.isVisible = !item.isVisible;
       //   item.isVisible = !item.isVisible;
       /* item.selected = !item.selected;
       this.contatti.selected = !this.contatti.selected; */

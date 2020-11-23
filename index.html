@@ -70,7 +70,7 @@
                 class="contenitore-contatto"
                 v-for="(item, index) in itemsSearched"
                 ::key="index"
-                :class="(contatti[index].selected === true) ? 'selected' : ''"
+                :class="(indexSelected === index) ? 'selected' : ''"
               >
                 <div
                   class="single-contact"
@@ -97,7 +97,7 @@
             id="contenitore-chat-dx"
             v-for="(item, index) in contatti"
             :key="index"
-            :class="(contatti[indexSelected, index].selected === true && contatti[indexSelected, index].isVisible === true ) ? 'show' : 'hidden'"
+            :class="(indexSelected === index) ? 'show' : 'hidden'"
           >
             <!-- Header della chat attiva -->
             <div class="info-chat">
