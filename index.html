@@ -3,6 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Vue CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
@@ -21,7 +23,7 @@
     <!-- Sottopagina con header verde -->
     <div class="container">
       <div id="header"></div>
-      <div class="container-webapp">
+      <div id="app" class="container-webapp">
         <!-- Parte sinistra lista chat -->
         <div class="left-side">
           <!-- Barra nome utente con avatar -->
@@ -55,117 +57,37 @@
           </div>
 
           <!-- Input filtra chat -->
-          <div class="input-icons">
+          <div id="filter" class="input-icons">
             <input
               type="text"
               id="filter-chat"
               placeholder="Cerca o inizia una nuova chat"
+              v-model="search"
             />
             <label for="stuff" class="fa fa-search input-icon"></label>
-          </div>
-
-          <!-- Lista chat sx-->
-          <div class="list-chat-container">
-            <div class="chat-item">
-              <div class="user-chat-avatar">
-                <img src="img/avatar_4.jpg" alt="" />
-                <div class="nome-contact">
-                  <h4>Luisa</h4>
-                  <p>Last</p>
+            <div v-if="contatti">
+              <div
+                class="contenitore-contatto"
+                v-for="(item, index) in itemsSearched"
+                ::key="index"
+              >
+                <div
+                  class="single-contact"
+                  @click="selectContatto(item)"
+                  :class="(item.selected === true) ? 'selected' : ''"
+                >
+                  <img :src="item.img" />
+                  <h4>{{item.name}}</h4>
+                </div>
+                <div class="ultimo-accesso">
+                  <p v-model="item.lastAccess">{{item.lastAccess}}</p>
                 </div>
               </div>
-              <div class="data-chat">
-                <p>Data</p>
-              </div>
             </div>
-
-            <div class="chat-item">
-              <div class="user-chat-avatar">
-                <img src="img/avatar_2.jpg" alt="" />
-                <div class="nome-contact">
-                  <h4>Mario</h4>
-                  <p>Last</p>
-                </div>
-              </div>
-              <div class="data-chat">
-                <p>Data</p>
-              </div>
-            </div>
-            <div class="chat-item">
-              <div class="user-chat-avatar">
-                <img src="img/avatar_3.jpg" alt="" />
-                <div class="nome-contact">
-                  <h4>Fabio</h4>
-                  <p>Last</p>
-                </div>
-              </div>
-              <div class="data-chat">
-                <p>Data</p>
-              </div>
-            </div>
-            <div class="chat-item">
-              <div class="user-chat-avatar">
-                <img src="img/avatar_1.jpg" alt="" />
-                <div class="nome-contact">
-                  <h4>Michele</h4>
-                  <p>Last</p>
-                </div>
-              </div>
-              <div class="data-chat">
-                <p>Data</p>
-              </div>
-            </div>
-            <div class="chat-item">
-              <div class="user-chat-avatar">
-                <img src="img/avatar_4.jpg" alt="" />
-                <div class="nome-contact">
-                  <h4>Luisa</h4>
-                  <p>Last</p>
-                </div>
-              </div>
-              <div class="data-chat">
-                <p>Data</p>
-              </div>
-            </div>
-
-            <div class="chat-item">
-              <div class="user-chat-avatar">
-                <img src="img/avatar_2.jpg" alt="" />
-                <div class="nome-contact">
-                  <h4>Mario</h4>
-                  <p>Last</p>
-                </div>
-              </div>
-              <div class="data-chat">
-                <p>Data</p>
-              </div>
-            </div>
-            <div class="chat-item">
-              <div class="user-chat-avatar">
-                <img src="img/avatar_3.jpg" alt="" />
-                <div class="nome-contact">
-                  <h4>Fabio</h4>
-                  <p>Last</p>
-                </div>
-              </div>
-              <div class="data-chat">
-                <p>Data</p>
-              </div>
-            </div>
-            <div class="chat-item">
-              <div class="user-chat-avatar">
-                <img src="img/avatar_1.jpg" alt="" />
-                <div class="nome-contact">
-                  <h4>Michele</h4>
-                  <p>Last</p>
-                </div>
-              </div>
-              <div class="data-chat">
-                <p>Data</p>
-              </div>
-            </div>
+            <!-- Lista chat sx-->
           </div>
         </div>
+
         <!-- Parte destra chat aperta -->
         <div class="right-side">
           <!-- Header della chat attiva -->
@@ -582,5 +504,6 @@
         </div>
       </div>
     </div>
+    <script src="js/script.js"></script>
   </body>
 </html>

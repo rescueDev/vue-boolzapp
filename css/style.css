@@ -143,6 +143,10 @@ img {
   justify-content: space-between;
 }
 
+.selected {
+  background-color: slateblue;
+}
+
 .user-chat-avatar {
   width: 30%;
   display: flex;
@@ -155,6 +159,18 @@ img {
 
 .nome-contact p {
   font-size: 12px;
+}
+
+.contenitore-contatto {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px;
+}
+
+.single-contact {
+  display: flex;
+  align-items: center;
 }
 
 /* Parte destra della webapp */
