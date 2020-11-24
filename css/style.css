@@ -271,13 +271,6 @@ p .last-message {
   /* debug */
 }
 
-.message-received {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  margin: 10px auto;
-}
-
 .text-sent {
   width: 30%;
   min-height: 50px;
@@ -287,30 +280,24 @@ p .last-message {
   /* display: flex; */
 }
 
-.mess-sent {
-  align-self: center;
-  width: 100%;
-}
-
-.text-rec {
-  width: 30%;
-  min-height: 50px;
-
-  background-color: rgb(255, 255, 255);
-  padding: 5px;
+.sent {
   border-radius: 10px;
-  /* display: flex; */
+  padding: 10px;
+  margin-left: 500px;
+  background-color: rgb(86, 221, 86);
 }
 
-.mess-rec {
-  align-self: center;
-  width: 100%;
+.received {
+  border-radius: 10px;
+  padding: 10px;
+  margin-right: 500px;
+  background-color: white;
 }
 
-.text-rec p,
-.text-sent p {
+.data-messaggio {
   text-align: right;
   padding-top: 5px;
+  font-size: 12px;
 }
 
 /* Barra invia messaggio */

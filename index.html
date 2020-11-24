@@ -132,20 +132,14 @@
             <div class="chat-space">
               <!-- Centratura chat e messaggi -->
               <div class="centratura-chat">
-                <!-- messaggio inviato -->
-                <div class="message-sent">
-                  <div class="text-sent">
-                    <h4 class="mess-sent">{{contatti[index].sentMessages}}</h4>
-                    <p>{{contatti[index].dataMessSent}}</p>
-                  </div>
-                </div>
-                <!-- messaggio ricevuto -->
-                <div class="message-received">
-                  <div class="text-rec">
-                    <h4 class="mess-rec">
-                      {{contatti[index].receivedMessages}}
-                    </h4>
-                    <p>{{contatti[index].dataMessRec}}</p>
+                <!-- messaggi chat -->
+                <div
+                  v-for="(item, index) in contatti[indexSelected].messages"
+                  class="messaggi-chat"
+                >
+                  <div class="messaggi" :class="item.status">
+                    <h4 class="messaggio">{{item.message}}</h4>
+                    <p class="data-messaggio">{{item.date}}</p>
                   </div>
                 </div>
               </div>
@@ -158,6 +152,8 @@
               type="text"
               class="type-message"
               placeholder="Scrivi un messaggio"
+              v-model="testoMessaggio"
+              v-on:keydown.enter="sendMessage()"
             />
             <i class="fas fa-microphone"></i>
           </div>
