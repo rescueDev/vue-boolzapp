@@ -77,7 +77,7 @@
                 <div class="single-contact">
                   <img :src="contatti[index].img" />
 
-                  <div>
+                  <div class="single-contact-text">
                     <h4>{{contatti[index].name}}</h4>
                     <p class="last-message">
                       {{contatti[index].messages[contatti[index].messages.length
@@ -120,9 +120,9 @@
                 <div class="contact-info">
                   <h5>{{contatti[index].name}}</h5>
                   <p>
-                    Ultimo accesso: {{
-                    contatti[index].messages[contatti[index].messages.length -
-                    1].date }}
+                    Ultimo accesso:
+                    {{contatti[index].messages[contatti[index].messages.length -
+                    1].date}}
                   </p>
                 </div>
                 <!-- Icone opzioni chat attiva -->
@@ -144,10 +144,12 @@
                   class="messaggi-chat"
                   :class="item.status"
                 >
-                  <span class="messaggio-text">{{item.message}}</span>
-                  <span class="data-messaggio">{{item.date}}</span>
-
+                  <div class="messaggi">
+                    <h4 class="messaggio">{{item.message}}</h4>
+                    <p class="data-messaggio">{{item.date}}</p>
+                  </div>
                   <!-- Messaggi che invio e ricevo-->
+                  <div></div>
                 </div>
               </div>
             </div>

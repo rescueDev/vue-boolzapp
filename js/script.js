@@ -34,12 +34,12 @@ var app = new Vue({
         lastAccess: "21/08/2020 10:58",
         messages: [
           {
-            message: "Ciao Michele cosa fai oggi?",
+            message: "Ciao Mario cosa fai oggi?",
             date: "16/11/2020 11:50",
             status: "sent",
           },
           {
-            message: "Oggi devo fare la spesa, tu?",
+            message: "Oggi devo fare il tampone dopo 15 giorni",
             date: "12/01/2020 12:52",
             status: "received",
           },
@@ -99,15 +99,17 @@ var app = new Vue({
         return item.name.toLowerCase().includes(self.search.toLowerCase());
       });
     },
-    // retriveLastAccess(index) {
-    //   var ultimoAccesso;
-    //   this.indexSelected = index;
-    //   this.contatti[index].messages.slice(-1).forEach((element) => {
-    //     console.log(element.date);
-    //     ultimoAccesso = element.date;
-    //   });
-    //   return ultimoAccesso;
-    // },
+    /* retriveLastAccess() {
+      var ultimoAccesso = this.contatti[this.indexSelected].messages
+        .slice(-1)
+        .forEach((element) => {
+          console.log(element.date);
+          var lastDate = element.date;
+          console.log(lastDate);
+          return lastDate;
+        });
+      console.log(ultimoAccesso);
+    }, */
   },
   methods: {
     selectContatto: function (item, index) {

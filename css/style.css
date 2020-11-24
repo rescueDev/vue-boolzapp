@@ -300,7 +300,11 @@ p .last-message {
 .received {
   border-radius: 10px;
   padding: 10px;
+<<<<<<< HEAD
   width: 50%;
+=======
+  margin-right: 500px;
+>>>>>>> c5c3fb9ea18ffd74d467535f24a072fd7d87f298
   background-color: white;
 }
 
