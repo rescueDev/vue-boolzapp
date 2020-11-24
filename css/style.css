@@ -184,13 +184,20 @@ img {
 .single-contact {
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
 
-p .last-message {
-  display: inline-block;
+.single-contact-text {
+  padding: 10px;
+}
+
+.last-message {
   overflow: hidden !important;
   text-overflow: ellipsis;
-  width: 50px;
+  width: 10%s;
+}
+
+.ultimo-accesso {
 }
 
 /* Parte destra della webapp */
@@ -225,7 +232,6 @@ p .last-message {
   line-height: 20px;
 }
 .active-chat-options {
-  width: 20%;
   align-self: center;
 }
 
@@ -286,26 +292,29 @@ p .last-message {
   /* display: flex; */
 }
 
+.messaggi-chat::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
 .sent {
   border-radius: 10px;
   padding: 10px;
-  width: 50%;
   background-color: rgb(113, 230, 113);
-}
-
-.blocco {
-  display: block;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  float: right;
 }
 
 .received {
   border-radius: 10px;
   padding: 10px;
-<<<<<<< HEAD
-  width: 50%;
-=======
-  margin-right: 500px;
->>>>>>> c5c3fb9ea18ffd74d467535f24a072fd7d87f298
+
   background-color: white;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  float: left;
 }
 
 .data-messaggio {

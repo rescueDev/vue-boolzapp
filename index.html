@@ -142,9 +142,11 @@
                 <div
                   v-for="(item, index) in contatti[indexSelected].messages"
                   class="messaggi-chat"
-                  :class="item.status"
                 >
-                  <div class="messaggi">
+                  <div
+                    class="messaggi"
+                    :class="(item.status === 'sent' )? 'sent' : 'received'"
+                  >
                     <h4 class="messaggio">{{item.message}}</h4>
                     <p class="data-messaggio">{{item.date}}</p>
                   </div>
