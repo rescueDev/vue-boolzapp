@@ -2,6 +2,7 @@ var app = new Vue({
   el: "#app",
   data: {
     search: "",
+    testoMessaggio: "",
     indexSelected: 0,
     contatti: [
       {
@@ -11,10 +12,18 @@ var app = new Vue({
         isVisible: false,
         selected: false,
         lastAccess: "12/01/2020 16:58",
-        sentMessages: "Ciao Michele cosa fai oggi?",
-        receivedMessages: "Oggi devo fare la spesa, tu?",
-        dataMessSent: "01/11/2020 09:50",
-        dataMessRec: "01/11/2020 09:52",
+        messages: [
+          {
+            message: "Ciao Michele cosa fai oggi?",
+            date: "01/11/2020 09:50",
+            status: "sent",
+          },
+          {
+            message: "Oggi devo fare la spesa, tu?",
+            date: "01/11/2020 09:52",
+            status: "received",
+          },
+        ],
       },
       {
         name: "Mario",
@@ -23,10 +32,18 @@ var app = new Vue({
         isVisible: false,
         selected: false,
         lastAccess: "21/08/2020 10:58",
-        sentMessages: "Ciao Mario, come va la quarantena?",
-        receivedMessages: "Insomma, devo fare un altro tampone fra 15 giorni",
-        dataMessSent: "16/11/2020 11:50",
-        dataMessRec: "12/01/2020 12:52",
+        messages: [
+          {
+            message: "Ciao Michele cosa fai oggi?",
+            date: "16/11/2020 11:50",
+            status: "sent",
+          },
+          {
+            message: "Oggi devo fare la spesa, tu?",
+            date: "12/01/2020 12:52",
+            status: "received",
+          },
+        ],
       },
       {
         name: "Fabio",
@@ -35,11 +52,19 @@ var app = new Vue({
         isVisible: false,
         selected: false,
         lastAccess: "08/06/2019 09:20",
-        sentMessages: "Ciao Fabio, sei sempre impegnato, non mi scrivi piu!!",
-        receivedMessages:
-          "Veramente ti ho scritto ieri, non è che hai sbagliato chat?",
-        dataMessSent: "12/01/2020 16:50",
-        dataMessRec: "12/01/2020 16:52",
+        messages: [
+          {
+            message: "Ciao Fabio, sei sempre impegnato, non mi scrivi piu!!",
+            date: "12/01/2020 16:50",
+            status: "sent",
+          },
+          {
+            message:
+              "Veramente ti ho scritto ieri, non è che hai sbagliato chat?",
+            date: "12/01/2020 16:52",
+            status: "received",
+          },
+        ],
       },
       {
         name: "Luisa",
@@ -48,16 +73,21 @@ var app = new Vue({
         isVisible: false,
         selected: false,
         lastAccess: "06/06/2020 15:20",
-        sentMessages: "Scusami Luisa ma hai tagliato la barba?",
-        receivedMessages: "Credi di essere simpatico vero? ",
-        dataMessSent: "21/10/2020 11:50",
-        dataMessRec: "21/10/2020 16:52",
+        messages: [
+          {
+            message: "Scusami Luisa ma hai tagliato la barba?",
+            date: "21/10/2020 11:50",
+            status: "sent",
+          },
+          {
+            message: "Credi di essere simpatico vero? ",
+            date: "21/10/2020 16:52",
+            status: "received",
+          },
+        ],
       },
     ],
     isVisible: false,
-    styleObject: {
-      display: "block",
-    },
   },
   computed: {
     itemsSearched: function () {
@@ -69,6 +99,15 @@ var app = new Vue({
         return item.name.toLowerCase().includes(self.search.toLowerCase());
       });
     },
+    // retriveLastAccess(index) {
+    //   var ultimoAccesso;
+    //   this.indexSelected = index;
+    //   this.contatti[index].messages.slice(-1).forEach((element) => {
+    //     console.log(element.date);
+    //     ultimoAccesso = element.date;
+    //   });
+    //   return ultimoAccesso;
+    // },
   },
   methods: {
     selectContatto: function (item, index) {
@@ -78,5 +117,25 @@ var app = new Vue({
       /* item.selected = !item.selected;
       this.contatti.selected = !this.contatti.selected; */
     },
+    sendMessage: function () {
+      this.contatti[this.indexSelected].messages.push({
+        message: this.testoMessaggio,
+        status: "sent",
+        date: "24/11/2020 16:50",
+      });
+      this.testoMessaggio = "";
+      setTimeout(() => {
+        this.contatti[this.indexSelected].messages.push({
+          message: "Ok..",
+          status: "received",
+          date: "24/11/2020 16:52",
+        });
+      }, 1000);
+    },
+    /*     retriveLastAccess() {
+      var ultimoAccesso = this.contatti[this.indexSelected].messages.length;
+      console.log(ultimoAccesso);
+      return ultimoAccesso;
+    }, */
   },
 });

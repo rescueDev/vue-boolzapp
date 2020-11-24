@@ -71,22 +71,24 @@
                 v-for="(item, index) in itemsSearched"
                 ::key="index"
                 :class="(indexSelected === index) ? 'selected' : ''"
+                @click="selectContatto(item, index)"
+                @click="retriveLastAccess()"
               >
-                <div
-                  class="single-contact"
-                  @click="selectContatto(item, index)"
-                >
+                <div class="single-contact">
                   <img :src="contatti[index].img" />
-                  <h4>{{contatti[index].name}}</h4>
+
                   <div>
+                    <h4>{{contatti[index].name}}</h4>
                     <p class="last-message">
-                      {{contatti[index].receivedMessages}}
+                      {{contatti[index].messages[contatti[index].messages.length
+                      - 1].message}}
                     </p>
                   </div>
                 </div>
                 <div class="ultimo-accesso">
-                  <p v-model="contatti[index].lastAccess">
-                    {{contatti[index].lastAccess}}
+                  <p v-model="contatti[index].messages.date">
+                    {{contatti[index].messages[contatti[index].messages.length -
+                    1].date}}
                   </p>
                 </div>
               </div>
@@ -117,7 +119,11 @@
 
                 <div class="contact-info">
                   <h5>{{contatti[index].name}}</h5>
-                  <p>Ultimo accesso: {{contatti[index].lastAccess}}</p>
+                  <p>
+                    Ultimo accesso: {{
+                    contatti[index].messages[contatti[index].messages.length -
+                    1].date }}
+                  </p>
                 </div>
                 <!-- Icone opzioni chat attiva -->
                 <div class="active-chat-options">
@@ -132,21 +138,16 @@
             <div class="chat-space">
               <!-- Centratura chat e messaggi -->
               <div class="centratura-chat">
-                <!-- messaggio inviato -->
-                <div class="message-sent">
-                  <div class="text-sent">
-                    <h4 class="mess-sent">{{contatti[index].sentMessages}}</h4>
-                    <p>{{contatti[index].dataMessSent}}</p>
-                  </div>
-                </div>
-                <!-- messaggio ricevuto -->
-                <div class="message-received">
-                  <div class="text-rec">
-                    <h4 class="mess-rec">
-                      {{contatti[index].receivedMessages}}
-                    </h4>
-                    <p>{{contatti[index].dataMessRec}}</p>
-                  </div>
+                <!-- messaggi chat -->
+                <div
+                  v-for="(item, index) in contatti[indexSelected].messages"
+                  class="messaggi-chat"
+                  :class="item.status"
+                >
+                  <span class="messaggio-text">{{item.message}}</span>
+                  <span class="data-messaggio">{{item.date}}</span>
+
+                  <!-- Messaggi che invio e ricevo-->
                 </div>
               </div>
             </div>
@@ -158,8 +159,10 @@
               type="text"
               class="type-message"
               placeholder="Scrivi un messaggio"
+              v-model="testoMessaggio"
+              v-on:keydown.enter="sendMessage()"
             />
-            <i class="fas fa-microphone"></i>
+            <i class="fas fa-microphone" @click="sendMessage()"></i>
           </div>
         </div>
       </div>

@@ -174,6 +174,11 @@ img {
   align-items: center;
   justify-content: space-between;
   padding: 15px;
+  border-bottom: 1px solid rgb(192, 202, 212);
+}
+
+.contenitore-contatto:hover {
+  background-color: rgb(231, 230, 230);
 }
 
 .single-contact {
@@ -220,6 +225,7 @@ p .last-message {
   line-height: 20px;
 }
 .active-chat-options {
+  width: 20%;
   align-self: center;
 }
 
@@ -271,13 +277,6 @@ p .last-message {
   /* debug */
 }
 
-.message-received {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  margin: 10px auto;
-}
-
 .text-sent {
   width: 30%;
   min-height: 50px;
@@ -287,30 +286,28 @@ p .last-message {
   /* display: flex; */
 }
 
-.mess-sent {
-  align-self: center;
-  width: 100%;
-}
-
-.text-rec {
-  width: 30%;
-  min-height: 50px;
-
-  background-color: rgb(255, 255, 255);
-  padding: 5px;
+.sent {
   border-radius: 10px;
-  /* display: flex; */
+  padding: 10px;
+  width: 50%;
+  background-color: rgb(113, 230, 113);
 }
 
-.mess-rec {
-  align-self: center;
-  width: 100%;
+.blocco {
+  display: block;
 }
 
-.text-rec p,
-.text-sent p {
+.received {
+  border-radius: 10px;
+  padding: 10px;
+  width: 50%;
+  background-color: white;
+}
+
+.data-messaggio {
   text-align: right;
   padding-top: 5px;
+  font-size: 12px;
 }
 
 /* Barra invia messaggio */
