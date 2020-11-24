@@ -71,11 +71,10 @@
                 v-for="(item, index) in itemsSearched"
                 ::key="index"
                 :class="(indexSelected === index) ? 'selected' : ''"
+                @click="selectContatto(item, index)"
+                @click="retriveLastAccess()"
               >
-                <div
-                  class="single-contact"
-                  @click="selectContatto(item, index)"
-                >
+                <div class="single-contact">
                   <img :src="contatti[index].img" />
                   <h4>{{contatti[index].name}}</h4>
                   <div>
@@ -85,8 +84,8 @@
                   </div>
                 </div>
                 <div class="ultimo-accesso">
-                  <p v-model="contatti[index].lastAccess">
-                    {{contatti[index].lastAccess}}
+                  <p v-model="contatti[index].messages.date">
+                    {{retriveLastAccess}}
                   </p>
                 </div>
               </div>
@@ -117,7 +116,7 @@
 
                 <div class="contact-info">
                   <h5>{{contatti[index].name}}</h5>
-                  <p>Ultimo accesso: {{contatti[index].lastAccess}}</p>
+                  <p>Ultimo accesso: {{retriveLastAccess}}</p>
                 </div>
                 <!-- Icone opzioni chat attiva -->
                 <div class="active-chat-options">

@@ -99,6 +99,17 @@ var app = new Vue({
         return item.name.toLowerCase().includes(self.search.toLowerCase());
       });
     },
+    retriveLastAccess() {
+      var ultimoAccesso = this.contatti[this.indexSelected].messages
+        .slice(-1)
+        .forEach((element) => {
+          console.log(element.date);
+          var lastDate = element.date;
+          console.log(lastDate);
+          return lastDate;
+        });
+      console.log(ultimoAccesso);
+    },
   },
   methods: {
     selectContatto: function (item, index) {
@@ -123,5 +134,10 @@ var app = new Vue({
         });
       }, 1000);
     },
+    /*     retriveLastAccess() {
+      var ultimoAccesso = this.contatti[this.indexSelected].messages.length;
+      console.log(ultimoAccesso);
+      return ultimoAccesso;
+    }, */
   },
 });
