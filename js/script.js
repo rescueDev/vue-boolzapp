@@ -120,6 +120,7 @@ var app = new Vue({
       this.contatti.selected = !this.contatti.selected; */
     },
     sendMessage: function () {
+      // if (this.testoMessaggio !== '') {
       this.contatti[this.indexSelected].messages.push({
         message: this.testoMessaggio,
         status: "sent",
