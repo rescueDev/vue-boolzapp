@@ -136,11 +136,14 @@
                 <div
                   v-for="(item, index) in contatti[indexSelected].messages"
                   class="messaggi-chat"
+                  :class="item.status"
                 >
-                  <div class="messaggi" :class="item.status">
+                  <div class="messaggi">
                     <h4 class="messaggio">{{item.message}}</h4>
                     <p class="data-messaggio">{{item.date}}</p>
                   </div>
+                  <!-- Messaggi che invio e ricevo-->
+                  <div></div>
                 </div>
               </div>
             </div>
@@ -155,7 +158,7 @@
               v-model="testoMessaggio"
               v-on:keydown.enter="sendMessage()"
             />
-            <i class="fas fa-microphone"></i>
+            <i class="fas fa-microphone" @click="sendMessage()"></i>
           </div>
         </div>
       </div>
