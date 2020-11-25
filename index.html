@@ -63,16 +63,16 @@
               id="filter-chat"
               placeholder="Cerca o inizia una nuova chat"
               v-model="search"
+              @input="itemsSearched()"
             />
             <label for="stuff" class="fa fa-search input-icon"></label>
-            <div v-if="contatti">
+            <div>
               <div
                 class="contenitore-contatto"
-                v-for="(item, index) in itemsSearched"
-                ::key="index"
+                v-for="(item, index) in contatti"
                 :class="(indexSelected === index) ? 'selected' : ''"
                 @click="selectContatto(item, index)"
-                @click="retriveLastAccess()"
+                v-if="item.filtered"
               >
                 <div class="single-contact">
                   <img :src="contatti[index].img" />

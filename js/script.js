@@ -11,6 +11,7 @@ var app = new Vue({
         lastMessage: "ok",
         isVisible: false,
         selected: false,
+        filtered: true,
         lastAccess: "12/01/2020 16:58",
         messages: [
           {
@@ -31,6 +32,7 @@ var app = new Vue({
         lastMessage: "ok",
         isVisible: false,
         selected: false,
+        filtered: true,
         lastAccess: "21/08/2020 10:58",
         messages: [
           {
@@ -51,6 +53,7 @@ var app = new Vue({
         lastMessage: "ok",
         isVisible: false,
         selected: false,
+        filtered: true,
         lastAccess: "08/06/2019 09:20",
         messages: [
           {
@@ -72,6 +75,7 @@ var app = new Vue({
         lastMessage: "ok",
         isVisible: false,
         selected: false,
+        filtered: true,
         lastAccess: "06/06/2020 15:20",
         messages: [
           {
@@ -89,17 +93,7 @@ var app = new Vue({
     ],
     isVisible: false,
   },
-  computed: {
-    itemsSearched: function () {
-      var self = this;
-      if (this.search == "") {
-        return this.contatti;
-      }
-      return this.contatti.filter(function (item) {
-        return item.name.toLowerCase().includes(self.search.toLowerCase());
-      });
-    },
-    /* retriveLastAccess() {
+  /* retriveLastAccess() {
       var ultimoAccesso = this.contatti[this.indexSelected].messages
         .slice(-1)
         .forEach((element) => {
@@ -110,31 +104,75 @@ var app = new Vue({
         });
       console.log(ultimoAccesso);
     }, */
-  },
   methods: {
     selectContatto: function (item, index) {
       this.indexSelected = index;
       item.selected = !item.selected;
-      //   item.isVisible = !item.isVisible;
-      /* item.selected = !item.selected;
-      this.contatti.selected = !this.contatti.selected; */
+    },
+    itemsSearched: function () {
+      //ciclo la lista con forEach
+      this.contatti.forEach((element) => {
+        let stringa = this.search;
+        let nome = element.name;
+        //tutto in minuscolo
+        nome = nome.toLowerCase();
+        stringa = stringa.toLowerCase();
+
+        //vedo se la stringa è contenuta nel nome
+        if (nome.includes(stringa)) {
+          element.filtered = true;
+        } else {
+          element.filtered = false;
+        }
+      });
     },
     sendMessage: function () {
       if (this.testoMessaggio !== "") {
         this.contatti[this.indexSelected].messages.push({
           message: this.testoMessaggio,
           status: "sent",
-          date: "24/11/2020 16:50",
+          date: this.actualDate(),
         });
         this.testoMessaggio = "";
         setTimeout(() => {
           this.contatti[this.indexSelected].messages.push({
-            message: "Ok..",
+            message: this.randomAnswers(),
             status: "received",
-            date: "24/11/2020 16:52",
+            date: this.actualDate(),
           });
         }, 1000);
       }
     },
+    actualDate: function () {
+      var today = new Date();
+      let day = today.getDate();
+      let month = today.getMonth() + 1;
+      let year = today.getFullYear();
+      let hour = today.getHours();
+      let minutes = today.getMinutes();
+      let date = day + "/" + month + "/" + year + " " + hour + ":" + minutes;
+      console.log(date);
+      return date;
+    },
+  },
+  randomAnswers: function () {
+    rand1 = [
+      "certo!",
+      "puzzi!",
+      "usciamo insieme?",
+      "bye, è stato bello!",
+      "fatti sentire ogni tanto...",
+      "Luca Giurato vive nei nostri cuori!",
+      "Che odorino! Hai cucinato o...",
+      "Non è che sei timido?",
+      "Lasciami stare in pace!",
+      "Live and let die!",
+      "Ma sei sempre così simpatico?",
+      "Perchè non ti dai all'ippica?",
+      "Ave Cesare!",
+    ];
+
+    var random = rand1[Math.floor(Math.random() * rand1.length)];
+    return random;
   },
 });
