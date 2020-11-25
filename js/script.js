@@ -133,7 +133,7 @@ var app = new Vue({
             status: "received",
             date: "24/11/2020 16:52",
           });
-        }, 1000);
+        }, 2000);
       }
     },
   },
