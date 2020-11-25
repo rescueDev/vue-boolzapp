@@ -120,24 +120,21 @@ var app = new Vue({
       this.contatti.selected = !this.contatti.selected; */
     },
     sendMessage: function () {
-      this.contatti[this.indexSelected].messages.push({
-        message: this.testoMessaggio,
-        status: "sent",
-        date: "24/11/2020 16:50",
-      });
-      this.testoMessaggio = "";
-      setTimeout(() => {
+      if (this.testoMessaggio !== "") {
         this.contatti[this.indexSelected].messages.push({
-          message: "Ok..",
-          status: "received",
-          date: "24/11/2020 16:52",
+          message: this.testoMessaggio,
+          status: "sent",
+          date: "24/11/2020 16:50",
         });
-      }, 1000);
+        this.testoMessaggio = "";
+        setTimeout(() => {
+          this.contatti[this.indexSelected].messages.push({
+            message: "Ok..",
+            status: "received",
+            date: "24/11/2020 16:52",
+          });
+        }, 1000);
+      }
     },
-    /*     retriveLastAccess() {
-      var ultimoAccesso = this.contatti[this.indexSelected].messages.length;
-      console.log(ultimoAccesso);
-      return ultimoAccesso;
-    }, */
   },
 });
