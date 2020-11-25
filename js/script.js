@@ -91,6 +91,21 @@ var app = new Vue({
         ],
       },
     ],
+    rand1: [
+      "certo!",
+      "puzzi!",
+      "usciamo insieme?",
+      "bye, è stato bello!",
+      "fatti sentire ogni tanto...",
+      "Luca Giurato vive nei nostri cuori!",
+      "Che odorino! Hai cucinato o...",
+      "Non è che sei timido?",
+      "Lasciami stare in pace!",
+      "Live and let die!",
+      "Ma sei sempre così simpatico?",
+      "Perchè non ti dai all'ippica?",
+      "Ave Cesare!",
+    ],
     isVisible: false,
   },
   /* retriveLastAccess() {
@@ -105,10 +120,12 @@ var app = new Vue({
       console.log(ultimoAccesso);
     }, */
   methods: {
+    //funzione che associa indice contatto a quello selezionato
     selectContatto: function (item, index) {
       this.indexSelected = index;
       item.selected = !item.selected;
     },
+    //funzione di ricerca contatto in lista
     itemsSearched: function () {
       //ciclo la lista con forEach
       this.contatti.forEach((element) => {
@@ -126,6 +143,7 @@ var app = new Vue({
         }
       });
     },
+    //funzione per inviare messaggio e riceverlo
     sendMessage: function () {
       if (this.testoMessaggio !== "") {
         this.contatti[this.indexSelected].messages.push({
@@ -136,13 +154,14 @@ var app = new Vue({
         this.testoMessaggio = "";
         setTimeout(() => {
           this.contatti[this.indexSelected].messages.push({
-            message: this.randomAnswers(),
+            message: this.randomAnswers(this.rand1),
             status: "received",
             date: this.actualDate(),
           });
         }, 1000);
       }
     },
+    //funzione che mi genera data e ora attuali
     actualDate: function () {
       var today = new Date();
       let day = today.getDate();
@@ -154,25 +173,9 @@ var app = new Vue({
       console.log(date);
       return date;
     },
-  },
-  randomAnswers: function () {
-    rand1 = [
-      "certo!",
-      "puzzi!",
-      "usciamo insieme?",
-      "bye, è stato bello!",
-      "fatti sentire ogni tanto...",
-      "Luca Giurato vive nei nostri cuori!",
-      "Che odorino! Hai cucinato o...",
-      "Non è che sei timido?",
-      "Lasciami stare in pace!",
-      "Live and let die!",
-      "Ma sei sempre così simpatico?",
-      "Perchè non ti dai all'ippica?",
-      "Ave Cesare!",
-    ];
-
-    var random = rand1[Math.floor(Math.random() * rand1.length)];
-    return random;
+    //funzione che mi genera risposte random da rand1 in data
+    randomAnswers: function (rand1) {
+      return rand1[Math.floor(Math.random() * rand1.length)];
+    },
   },
 });
