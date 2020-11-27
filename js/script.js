@@ -91,6 +91,69 @@ var app = new Vue({
           },
         ],
       },
+      {
+        name: "Carlo",
+        img: "img/avatar_5.jpg",
+        lastMessage: "ok",
+        isVisible: false,
+        selected: false,
+        filtered: true,
+        lastAccess: "06/06/2020 15:20",
+        messages: [
+          {
+            message: "Ciao bell'uomo",
+            date: "21/10/2020 11:50",
+            status: "sent",
+          },
+          {
+            message: "Smettila",
+            date: "21/10/2020 16:52",
+            status: "received",
+          },
+        ],
+      },
+      {
+        name: "Maurizio",
+        img: "img/avatar_8.jpg",
+        lastMessage: "ok",
+        isVisible: false,
+        selected: false,
+        filtered: true,
+        lastAccess: "06/06/2020 15:20",
+        messages: [
+          {
+            message: "Ciao bell'uomo",
+            date: "21/10/2020 11:50",
+            status: "sent",
+          },
+          {
+            message: "Smettila",
+            date: "21/10/2020 16:52",
+            status: "received",
+          },
+        ],
+      },
+      {
+        name: "Carlotta",
+        img: "img/avatar_io.jpg",
+        lastMessage: "ok",
+        isVisible: false,
+        selected: false,
+        filtered: true,
+        lastAccess: "06/06/2020 15:20",
+        messages: [
+          {
+            message: "Ciao bella donna!",
+            date: "21/10/2020 11:50",
+            status: "sent",
+          },
+          {
+            message: "Hey, tutto bene femminuccia?",
+            date: "21/10/2020 16:52",
+            status: "received",
+          },
+        ],
+      },
     ],
     rand1: [
       "certo!",

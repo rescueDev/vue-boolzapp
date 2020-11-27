@@ -96,6 +96,7 @@ input:focus {
   display: flex;
   justify-content: center;
   align-items: center;
+  position: sticky;
 }
 
 /*input search contact*/
@@ -119,6 +120,7 @@ label {
   width: 100%;
   height: calc(90vh - 40px - 80px - 80px);
   background-color: white;
+  overflow-y: auto;
 }
 
 /*single contact*/
@@ -166,8 +168,6 @@ label {
 #right-side {
   width: calc(100% - 35%);
   height: 100%;
-  /* debug */
-  background-color: orange;
 }
 
 #contenitore-chat-dx {
@@ -285,9 +285,9 @@ label {
 
 /* Tablet version WhatsAppWeb */
 
-@media all and (min-width: 600px) and (max-width: 878px) {
+@media all and (min-width: 600px) and (max-width: 933px) {
   img {
-    height: 35px;
+    height: 30px;
   }
 
   h4 {
@@ -332,6 +332,16 @@ label {
 }
 
 @media all and (max-width: 599px) {
+  #notifications {
+    display: none;
+  }
+
+  #lista-contatti {
+    width: 100%;
+    height: calc(90vh - 40px - 60px);
+    background-color: white;
+  }
+
   #left-side {
     width: 100%;
   }
