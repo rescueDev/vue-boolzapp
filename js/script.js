@@ -4,6 +4,7 @@ var app = new Vue({
     search: "",
     testoMessaggio: "",
     indexSelected: 0,
+    toggleChat: false,
     contatti: [
       {
         name: "Michele",
@@ -108,7 +109,14 @@ var app = new Vue({
     ],
     isVisible: false,
   },
-  /* retriveLastAccess() {
+  computed: {
+    rightSectToggle: function () {
+      return {
+        mostra: this.toggleChat,
+        hide: !this.toggleChat,
+      };
+    },
+    /* retriveLastAccess() {
       var ultimoAccesso = this.contatti[this.indexSelected].messages
         .slice(-1)
         .forEach((element) => {
@@ -119,29 +127,22 @@ var app = new Vue({
         });
       console.log(ultimoAccesso);
     }, */
+  },
+
   methods: {
     //funzione che associa indice contatto a quello selezionato
     selectContatto: function (item, index) {
       this.indexSelected = index;
       item.selected = !item.selected;
+      this.toggleChat = !this.toggleChat;
     },
     //funzione di ricerca contatto in lista
-    itemsSearched: function () {
-      //ciclo la lista con forEach
-      this.contatti.forEach((element) => {
-        let stringa = this.search;
-        let nome = element.name;
-        //tutto in minuscolo
-        nome = nome.toLowerCase();
-        stringa = stringa.toLowerCase();
-
-        //vedo se la stringa è contenuta nel nome
-        if (nome.includes(stringa)) {
-          element.filtered = true;
-        } else {
-          element.filtered = false;
-        }
-      });
+    filterChat: function (contatto) {
+      if (contatto.name.toLowerCase().includes(this.search.toLowerCase())) {
+        return true;
+      } else {
+        return false;
+      }
     },
     //funzione per inviare messaggio e riceverlo
     sendMessage: function () {
@@ -176,6 +177,9 @@ var app = new Vue({
     //funzione che mi genera risposte random da rand1 in data
     randomAnswers: function (rand1) {
       return rand1[Math.floor(Math.random() * rand1.length)];
+    },
+    chatSxResp: function () {
+      this.toggleChat = !this.toggleChat;
     },
   },
 });

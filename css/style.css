@@ -1,11 +1,205 @@
-/* Regole generali */
 * {
-  margin: 0;
-  padding: 0;
   box-sizing: border-box;
-  font-family: "Roboto", sans-serif;
+  padding: 0;
+  margin: 0;
+  font-family: Roboto, sans-serif;
 }
 
+img {
+  max-width: 100%;
+  height: 60px;
+  border-radius: 50px;
+}
+
+i {
+  font-size: 18px;
+  color: slategray;
+  padding: 5px;
+}
+
+p {
+  font-size: 14px;
+  color: rgb(112, 128, 144);
+}
+
+input:focus {
+  outline: none;
+}
+
+#app {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #dadbd2;
+}
+
+#backheader {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100px;
+  background-color: #009988;
+}
+/* container della webapp */
+#webapp-container {
+  width: 80%;
+  height: 90vh;
+  display: flex;
+  position: relative;
+  /* debug */
+}
+/* sezione sinistra della webapp */
+#left-side {
+  width: 35%;
+
+  height: 100%;
+}
+
+/* header con miei dati profilo */
+#myprofile {
+  width: 100%;
+  padding: 0 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* debug */
+  min-height: 80px;
+  background-color: #eaeaea;
+}
+
+#user-name-avatar {
+  display: flex;
+  align-items: center;
+}
+#nome-user {
+  padding-left: 10px;
+}
+
+/* barra attiva notifiche web */
+#notifications {
+  width: 100%;
+  padding: 0 10px;
+  display: flex;
+  align-items: center;
+  /* debug */
+  min-height: 80px;
+  background-color: #76dcff;
+}
+
+/* spazio ricerca contatti chat */
+#ricerca-contatto {
+  width: 100%;
+  /* debug */
+  min-height: 40px;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/*input search contact*/
+#filtra-contatto {
+  width: 100%;
+  height: 30px;
+  position: sticky;
+  padding-left: 30px;
+}
+
+/* search icon inside input*/
+label {
+  position: absolute;
+  top: calc (50% - 0.5em);
+  left: 6px;
+}
+
+/* sezione contatti sinistra */
+
+#lista-contatti {
+  width: 100%;
+  height: calc(90vh - 40px - 80px - 80px);
+  background-color: white;
+}
+
+/*single contact*/
+.contatto {
+  width: 100%;
+  height: 80px;
+  padding: 10px;
+  background-color: white;
+  border-bottom: 1px solid gainsboro;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.contact-info {
+  width: 40%;
+  display: flex;
+}
+
+.contact-text {
+  width: 50%;
+  align-self: center;
+  padding-left: 10px;
+}
+.contact-text p {
+  height: 30%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  white-space: nowrap;
+  width: 200px;
+}
+
+.last-access {
+  align-self: flex-start;
+}
+
+/* Vue selected class contatto */
+.selected {
+  background-color: lightgrey;
+}
+
+/* sezione destra web app */
+
+#right-side {
+  width: calc(100% - 35%);
+  height: 100%;
+  /* debug */
+  background-color: orange;
+}
+
+#contenitore-chat-dx {
+  width: 100%;
+}
+
+/* header info chat sez destra */
+.info-chat {
+  width: 100%;
+  height: 80px;
+  padding: 0 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* debug */
+  background-color: #eaeaea;
+}
+
+.chat-header-info .fas.fa-chevron-left {
+  display: none;
+}
+
+.chat-header-info {
+  display: flex;
+}
+
+.text-chat-sx {
+  align-self: center;
+  padding-left: 10px;
+}
+
+/* classi show e hidden chat */
 .show {
   display: block;
 }
@@ -14,413 +208,147 @@
   display: none;
 }
 
-/* Stile input generale */
-input {
-  border-radius: 20px;
-  border: 0;
-  padding-left: 10px;
-}
-
-input:focus {
-  outline-width: 0;
-}
-
-p {
-  font-size: 14px;
-  color: darkgray;
-}
-
-.container {
-  width: 100%;
-  /* debug */
-  /* background-color: grey; */
-  border: 1px solid black;
-}
-
-#header {
-  width: 100%;
-  height: 100px;
-  background-color: #009688;
-  position: absolute;
-}
-
-.container-webapp {
-  width: 80%;
-  height: 700px;
-  margin: 2% auto;
-  display: flex;
-  justify-content: center;
-  /*debug */
-  background-color: #ededed;
-  position: relative;
-}
-
-/* Parte sinistra webapp */
-.left-side {
-  width: 30%;
-}
-
-.nome-utente {
-  display: flex;
-  justify-content: space-between;
-  min-height: 50px;
-  padding: 5px;
-  align-items: center;
-}
-
-#user-name-avatar {
-  width: 40%;
-  display: flex;
-}
-
-#nome-user {
-  width: 80%;
-  align-self: center;
-  font-size: 12px;
-}
-
-#user-name-controls .fas {
-  padding: 0 8px;
-  color: slategray;
-  font-size: 18px;
-}
-
-.hidden-controls {
-  height: 90px;
-  display: none;
-}
-
-img {
-  max-width: 100%;
-  height: 50px;
-  border-radius: 50px;
-}
-
-#enable-notifications {
-  display: flex;
-  justify-content: space-around;
-  background-color: #9de1fe;
-  min-height: 60px;
-  padding: 10px;
-  margin-bottom: 10px;
-}
-
-#notifications-text {
-  align-self: center;
-}
-
-#filter-chat {
-  width: 100%;
-  padding: 10px;
-  text-align: center;
-  position: sticky;
-}
-
-.input-icon {
-  position: absolute;
-  top: calc (50% - 0.5em);
-  left: 3px;
-}
-
-.input-icons {
-  width: 100%;
-  margin-bottom: 10px;
-  position: relative;
-}
-
-.fa-search {
-  padding: 10px;
-  color: slategray;
-}
-
-/* Lista chat sx */
-
-.list-chat-container {
-  width: 95%;
-  height: calc(700px - 210px);
-  margin: 0 auto;
-  overflow-y: auto;
-}
-
-.chat-item {
-  width: 100%;
-  min-height: 40px;
-  border-bottom: 1px solid rgb(175, 187, 199);
-  padding: 10px;
-  display: flex;
-  justify-content: space-between;
-}
-
-.selected {
-  background-color: rgb(214, 218, 221);
-}
-
-.user-chat-avatar {
-  width: 30%;
-  display: flex;
-}
-
-.nome-contact {
-  width: 80%;
-  align-self: center;
-}
-
-.nome-contact p {
-  font-size: 12px;
-}
-
-.contenitore-contatto {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 15px;
-  border-bottom: 1px solid rgb(192, 202, 212);
-}
-
-.contenitore-contatto:hover {
-  background-color: rgb(231, 230, 230);
-}
-
-.single-contact {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.single-contact-text {
-  padding: 10px;
-}
-
-.last-message {
-  overflow: hidden !important;
-  text-overflow: ellipsis;
-  width: 10%s;
-}
-
-.ultimo-accesso {
-}
-
-/* Parte destra della webapp */
-.right-side {
-  width: 70%;
-  /* height: calc(698.4 - 30px); */
-}
-
-#contenitore-chat-dx {
-}
-
-.info-chat {
-  width: 100%;
-  display: block;
-  justify-content: space-between;
-  align-items: center;
-  padding: 5px;
-  position: sticky;
-  border-left: 1px solid slategray;
-}
-
-/* Alternative dinamiche per contatto mostrato con chat attiva */
-
-.avatar-name {
-  width: 100%;
-  display: flex;
-}
-
-.contact-info {
-  width: 80%;
-  align-self: center;
-  line-height: 20px;
-}
-.active-chat-options {
-  align-self: center;
-}
-
-.active-chat-options i {
-  padding: 0 8px;
-  color: slategray;
-  font-size: 18px;
-}
-
+/* Main chat space */
 .chat-space {
   width: 100%;
-  height: calc(700px - 60px - 70px);
-
+  height: calc(90vh - 80px - 60px);
   overflow-y: auto;
-  /* debug */
   background-image: url(../img/whatsappbg.png);
   background-size: cover;
 }
 
+/* centratura chat messaggi */
 .centratura-chat {
-  padding: 20px 40px;
+  padding: 20px 20px;
 }
 
-/* Alternative chat dinamiche per ogni contatto */
-.centratura-chat.uno {
-  display: block;
+.messaggi-chat {
+  padding: 10px 0;
 }
 
-.centratura-chat.due {
-  display: none;
+.messaggi {
+  min-width: 100px;
+  max-width: 300px;
 }
 
-.centratura-chat.tre {
-  display: none;
+/*messaggio inviato */
+.sent {
+  background-color: #cbfbb3;
+  max-width: 300px;
+  float: right;
+  border-radius: 15px;
+  padding: 10px;
+  word-wrap: break-word;
 }
 
-.centratura-chat.quattro {
-  display: none;
+/*messaggio inviato */
+.received {
+  background-color: white;
+  float: left;
+  border-radius: 15px;
+  padding: 10px;
+  word-wrap: break-word;
 }
 
-.centratura-chat.cinque {
-  display: none;
-}
-
-.message-sent {
-  display: flex;
-  justify-content: flex-end;
-  margin: 10px auto;
-  /* debug */
-}
-
-.text-sent {
-  width: 30%;
-  min-height: 50px;
-  background-color: #dcf8c6;
-  padding: 5px;
-  border-radius: 10px;
-  /* display: flex; */
-}
-
+/* clearfix float messaggi */
 .messaggi-chat::after {
   content: "";
-  display: table;
   clear: both;
-}
-
-.sent {
-  border-radius: 10px;
-  padding: 10px;
-  background-color: rgb(113, 230, 113);
-  margin-bottom: 10px;
-  margin-top: 10px;
-  float: right;
-}
-
-.received {
-  border-radius: 10px;
-  padding: 10px;
-
-  background-color: white;
-  margin-bottom: 10px;
-  margin-top: 10px;
-  float: left;
+  display: table;
 }
 
 .data-messaggio {
   text-align: right;
-  padding-top: 5px;
   font-size: 12px;
+  padding-top: 5px;
 }
 
-/* Barra invia messaggio */
-.send-message-bar {
+/* footer con input per inviare messaggio */
+.write-message {
   width: 100%;
-  padding: 15px;
+  background-color: white;
+  height: 60px;
   display: flex;
-  justify-content: space-between;
+  align-items: center;
+  justify-content: space-around;
 }
 
-.type-message {
+/* input write message */
+#type-message {
   width: 90%;
-  height: 40px;
-}
-
-.send-message-bar i {
-  align-self: center;
-  font-size: 20px;
-  color: slategray;
-  padding: 0 8px;
+  height: 30px;
+  border-radius: 50px;
+  padding-left: 15px;
 }
 
 /* Responsive Breakpoints */
 
 /* Tablet version WhatsAppWeb */
 
-@media all and (min-width: 500px) and (max-width: 878px) {
-  p {
-    font-size: 12px;
+@media all and (min-width: 600px) and (max-width: 878px) {
+  img {
+    height: 35px;
   }
 
-  #enable-notifications {
+  h4 {
+    font-size: 14px;
+  }
+
+  i {
+    font-size: 14px;
+  }
+
+  #notifications {
     display: none;
   }
-
-  #user-name-avatar {
-    width: 50%;
-  }
-  #user-name-controls {
-    display: none;
-  }
-  .hidden-controls {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 20px;
-    color: slategray;
-  }
-
-  .hidden-controls i {
-    padding: 0 8px;
-    font-size: 22px;
-  }
-
-  .input-icons {
+  #lista-contatti {
     width: 100%;
-    margin: 0 auto;
+    height: calc(90vh - 40px - 80px);
+    background-color: white;
   }
 
-  #filter-chat {
-    padding-left: 30px;
-    font-size: x-small;
-    margin-bottom: 20px;
-  }
-  label .fa-search {
-    font-size: xx-small;
-  }
-
-  .list-chat-container {
-    height: calc(700px - 280px);
-  }
-
-  .user-chat-avatar {
-    width: 40%;
-  }
-  .nome-contact {
-    width: 50%;
-    font-size: 13px;
-    margin-left: 8px;
-  }
-  .data-chat {
+  #user-name-controls {
     display: none;
   }
 
   .contact-info {
-    width: 100%;
-    font-size: 14px;
-    line-height: 14px;
+    width: 30%;
   }
 
-  .active-chat-options i {
+  .contact-text {
+    width: 30%;
+
+    padding-left: 5px;
+  }
+  .contact-text p {
+    width: 100px;
+    padding-top: 5px;
     font-size: 12px;
-    padding: 0 3px;
   }
 
-  .message-sent,
-  .message-received {
+  .last-access p {
+    font-size: 12px;
+  }
+}
+
+@media all and (max-width: 599px) {
+  #left-side {
     width: 100%;
-    font-size: small;
-    font-weight: bold;
-    padding: 5px;
+  }
+
+  #right-side {
+    width: 100%;
+  }
+
+  .hide {
+    display: none;
+  }
+
+  .mostra {
+    display: block;
+  }
+
+  .chat-header-info .fas.fa-chevron-left {
+    display: block;
   }
 }

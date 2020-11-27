@@ -3,33 +3,39 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- Vue CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
       integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
       crossorigin="anonymous"
     />
-    <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link
       href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="css/style.css" />
-    <title>Boozzapp</title>
+    <title>Vue Boolzap</title>
   </head>
   <body>
-    <!-- Sottopagina con header verde -->
-    <div class="container">
-      <div id="header"></div>
-      <div id="app" class="container-webapp">
-        <!-- Parte sinistra lista chat -->
-        <div class="left-side">
-          <!-- Barra nome utente con avatar -->
-          <div class="nome-utente">
+    <!-- container generale -->
+    <div id="app">
+      <header id="backheader"></header>
+      <!-- container webapp -->
+      <div id="webapp-container">
+        <!-- sezione sinistra -->
+        <section
+          id="left-side"
+          :class="{hide: toggleChat , mostra: !toggleChat}"
+        >
+          <!-- Header sezione sinistra  -->
+
+          <header id="myprofile">
             <div id="user-name-avatar">
-              <img src="img/avatar_2.jpg" alt="user avatar" />
+              <div class="profile-img">
+                <img src="img/avatar_7.jpg" alt="user avatar" />
+              </div>
+
               <div id="nome-user">
                 <h4>Salvatore Borgia</h4>
               </div>
@@ -39,16 +45,10 @@
               <i class="fas fa-comment-dots"></i>
               <i class="fas fa-ellipsis-v"></i>
             </div>
-          </div>
+          </header>
 
-          <div class="hidden-controls">
-            <i class="fas fa-circle-notch"></i>
-            <i class="fas fa-comment-dots"></i>
-            <i class="fas fa-ellipsis-v"></i>
-          </div>
-
-          <!-- Barra attiva le notifiche desktop -->
-          <div id="enable-notifications">
+          <!-- Attiva notifiche web sinistra -->
+          <div id="notifications">
             <img src="img/notlogo.PNG" alt="logo notifiche desktop" />
             <div id="notifications-text">
               <h4>Ricevi notifiche dei nuovi messaggi</h4>
@@ -56,87 +56,76 @@
             </div>
           </div>
 
-          <!-- Input filtra chat -->
-          <div id="filter" class="input-icons">
-            <input
-              type="text"
-              id="filter-chat"
-              placeholder="Cerca o inizia una nuova chat"
-              v-model="search"
-              @input="itemsSearched()"
-            />
+          <!-- Ricerca contatto filtra -->
+          <div id="ricerca-contatto">
+            <input id="filtra-contatto" type="text" v-model="search" />
             <label for="stuff" class="fa fa-search input-icon"></label>
-            <div>
-              <div
-                class="contenitore-contatto"
-                v-for="(item, index) in contatti"
-                :class="(indexSelected === index) ? 'selected' : ''"
-                @click="selectContatto(item, index)"
-                v-if="item.filtered"
-              >
-                <div class="single-contact">
-                  <img :src="contatti[index].img" />
+          </div>
 
-                  <div class="single-contact-text">
-                    <h4>{{contatti[index].name}}</h4>
-                    <p class="last-message">
-                      {{contatti[index].messages[contatti[index].messages.length
-                      - 1].message}}
-                    </p>
-                  </div>
+          <!-- Lista chat sez sinistra -->
+          <div id="lista-contatti">
+            <!-- singolo contatto chat -->
+            <div
+              class="contatto"
+              v-for="(contatto, index) in contatti"
+              :key="contatto"
+              v-if="filterChat(contatto)"
+              :class="(indexSelected === index) ? 'selected' : ''"
+              @click="selectContatto(contatto, index)"
+              @click="chatSxResp"
+            >
+              <div class="contact-info">
+                <div class="img-contact">
+                  <img :src="contatto.img" alt="" />
                 </div>
-                <div class="ultimo-accesso">
-                  <p v-model="contatti[index].messages.date">
-                    {{contatti[index].messages[contatti[index].messages.length -
-                    1].date}}
+
+                <div class="contact-text">
+                  <h4>{{contatto.name}}</h4>
+                  <p>
+                    {{contatto.messages[contatto.messages.length - 1].message}}
                   </p>
                 </div>
               </div>
+              <div class="last-access">
+                <p>{{contatto.messages[contatto.messages.length - 1].date}}</p>
+              </div>
             </div>
-            <!-- Lista chat sx-->
           </div>
-        </div>
+        </section>
 
-        <!-- Parte destra chat aperta -->
-        <div class="right-side">
+        <!-- sezione destra -->
+        <section id="right-side" :class="rightSectToggle">
           <div
             id="contenitore-chat-dx"
-            v-for="(item, index) in contatti"
+            id="contenitore-chat-dx"
+            v-for="(user, index) in contatti"
             :key="index"
             :class="(indexSelected === index) ? 'show' : 'hidden'"
           >
-            <!-- Header della chat attiva -->
-            <div class="info-chat">
-              <!-- SEZIONE DINAMICA CAMBIA CONTATTO CON CUI CHATTO -->
-
-              <!-- Info contatto con cui chatto 1 -->
-              <div class="avatar-name">
-                <img
-                  class="contact-avatar"
-                  :src="contatti[index].img"
-                  alt="contact-avatar"
-                />
-
-                <div class="contact-info">
-                  <h5>{{contatti[index].name}}</h5>
+            <!-- header sezione sinistra chat -->
+            <header class="info-chat">
+              <!-- immagine header sez sx -->
+              <div class="chat-header-info">
+                <i class="fas fa-chevron-left" @click="chatSxResp"></i>
+                <div class="img-chat">
+                  <img :src="user.img" alt="" />
+                </div>
+                <div class="text-chat-sx">
+                  <h4>{{user.name}}</h4>
                   <p>
-                    Ultimo accesso:
-                    {{contatti[index].messages[contatti[index].messages.length -
+                    Ultimo accesso: {{user.messages[user.messages.length -
                     1].date}}
                   </p>
                 </div>
-                <!-- Icone opzioni chat attiva -->
-                <div class="active-chat-options">
-                  <i class="fas fa-search"></i>
-                  <i class="fas fa-paperclip"></i>
-                  <i class="fas fa-comment-dots"></i>
-                </div>
               </div>
-            </div>
 
-            <!-- Sezione chat -->
-            <div class="chat-space">
-              <!-- Centratura chat e messaggi -->
+              <div class="chat-header-icons">
+                <i class="fas fa-search"></i>
+                <i class="fas fa-paperclip"></i>
+                <i class="fas fa-comment-dots"></i>
+              </div>
+            </header>
+            <main class="chat-space">
               <div class="centratura-chat">
                 <!-- messaggi chat -->
                 <div
@@ -151,24 +140,22 @@
                     <p class="data-messaggio">{{item.date}}</p>
                   </div>
                   <!-- Messaggi che invio e ricevo-->
-                  <div></div>
                 </div>
               </div>
-            </div>
+            </main>
+            <footer class="write-message">
+              <i class="far fa-laugh"></i>
+              <input
+                id="type-message"
+                type="text"
+                placeholder="Scrivi un messaggio"
+                v-model="testoMessaggio"
+                v-on:keydown.enter="sendMessage()"
+              />
+              <i class="fas fa-microphone" @click="sendMessage()"></i>
+            </footer>
           </div>
-          <!-- Barra invia messaggio -->
-          <div class="send-message-bar">
-            <i class="far fa-laugh"></i>
-            <input
-              type="text"
-              class="type-message"
-              placeholder="Scrivi un messaggio"
-              v-model="testoMessaggio"
-              v-on:keydown.enter="sendMessage()"
-            />
-            <i class="fas fa-microphone" @click="sendMessage()"></i>
-          </div>
-        </div>
+        </section>
       </div>
     </div>
     <script src="js/script.js"></script>
