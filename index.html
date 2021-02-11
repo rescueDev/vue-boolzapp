@@ -69,7 +69,7 @@
               class="contatto"
               v-for="(contatto, index) in contatti"
               :key="contatto"
-              v-if="filterChat(contatto)"
+              v-show="filterChat(contatto)"
               :class="(indexSelected === index) ? 'selected' : ''"
               @click="selectContatto(contatto, index)"
               @click="chatSxResp"
